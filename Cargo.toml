@@ -1,0 +1,14 @@
+[package]
+name = "cuda_coll"
+version = "0.0.1"
+authors = ["Peter Jin <peterhaijin@gmail.com>"]
+
+[lib]
+name = "cuda_coll"
+path = "src/lib.rs"
+
+[build-dependencies]
+bindgen = "*"
+
+[dependencies]
+cuda = { path = "../libcuda" }
