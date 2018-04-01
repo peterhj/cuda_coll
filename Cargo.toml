@@ -12,3 +12,4 @@ bindgen = "*"
 
 [dependencies]
 cuda = { path = "../libcuda" }
+float = { path = "../libfloat" }
