@@ -122,6 +122,9 @@ pub struct NcclComm {
   ptr:  ncclComm_t,
 }
 
+unsafe impl Send for NcclComm {}
+unsafe impl Sync for NcclComm {}
+
 impl Drop for NcclComm {
   fn drop(&mut self) {
     let status = unsafe { ncclCommDestroy(self.ptr) };
