@@ -38,59 +38,59 @@ impl NcclReduceOp {
 }
 
 pub trait NcclDataType: Copy {
-  fn raw_data_type() -> ncclDataType_t;
+  fn nccl_data_type() -> ncclDataType_t;
 }
 
 impl NcclDataType for i8 {
-  fn raw_data_type() -> ncclDataType_t {
+  fn nccl_data_type() -> ncclDataType_t {
     ncclDataType_t_ncclInt8
   }
 }
 
 impl NcclDataType for u8 {
-  fn raw_data_type() -> ncclDataType_t {
+  fn nccl_data_type() -> ncclDataType_t {
     ncclDataType_t_ncclUint8
   }
 }
 
 impl NcclDataType for i32 {
-  fn raw_data_type() -> ncclDataType_t {
+  fn nccl_data_type() -> ncclDataType_t {
     ncclDataType_t_ncclInt32
   }
 }
 
 impl NcclDataType for u32 {
-  fn raw_data_type() -> ncclDataType_t {
+  fn nccl_data_type() -> ncclDataType_t {
     ncclDataType_t_ncclUint32
   }
 }
 
 impl NcclDataType for i64 {
-  fn raw_data_type() -> ncclDataType_t {
+  fn nccl_data_type() -> ncclDataType_t {
     ncclDataType_t_ncclInt64
   }
 }
 
 impl NcclDataType for u64 {
-  fn raw_data_type() -> ncclDataType_t {
+  fn nccl_data_type() -> ncclDataType_t {
     ncclDataType_t_ncclUint64
   }
 }
 
 impl NcclDataType for f16_stub {
-  fn raw_data_type() -> ncclDataType_t {
+  fn nccl_data_type() -> ncclDataType_t {
     ncclDataType_t_ncclFloat16
   }
 }
 
 impl NcclDataType for f32 {
-  fn raw_data_type() -> ncclDataType_t {
+  fn nccl_data_type() -> ncclDataType_t {
     ncclDataType_t_ncclFloat32
   }
 }
 
 impl NcclDataType for f64 {
-  fn raw_data_type() -> ncclDataType_t {
+  fn nccl_data_type() -> ncclDataType_t {
     ncclDataType_t_ncclFloat64
   }
 }
@@ -185,7 +185,7 @@ impl NcclComm {
         send_buf as *const _,
         recv_buf as *mut _,
         count,
-        <T as NcclDataType>::raw_data_type(),
+        <T as NcclDataType>::nccl_data_type(),
         op.to_raw_op(),
         root,
         self.ptr,
@@ -201,7 +201,7 @@ impl NcclComm {
     let status = unsafe { ncclBcast(
         buf as *mut _,
         count,
-        <T as NcclDataType>::raw_data_type(),
+        <T as NcclDataType>::nccl_data_type(),
         root,
         self.ptr,
         stream,
@@ -217,7 +217,7 @@ impl NcclComm {
         send_buf as *const _,
         recv_buf as *mut _,
         count,
-        <T as NcclDataType>::raw_data_type(),
+        <T as NcclDataType>::nccl_data_type(),
         op.to_raw_op(),
         self.ptr,
         stream,
@@ -233,7 +233,7 @@ impl NcclComm {
         send_buf as *const _,
         recv_buf as *mut _,
         recv_count,
-        <T as NcclDataType>::raw_data_type(),
+        <T as NcclDataType>::nccl_data_type(),
         op.to_raw_op(),
         self.ptr,
         stream,
@@ -249,7 +249,7 @@ impl NcclComm {
         send_buf as *const _,
         recv_buf as *mut _,
         send_count,
-        <T as NcclDataType>::raw_data_type(),
+        <T as NcclDataType>::nccl_data_type(),
         self.ptr,
         stream,
     ) };
