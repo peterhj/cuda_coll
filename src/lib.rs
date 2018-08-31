@@ -5,7 +5,7 @@ extern crate float;
 
 use ::ffi::*;
 
-use cuda::ffi::runtime::{cudaStream_t};
+use cuda::ffi::driver_types::{cudaStream_t};
 use float::stub::{f16_stub};
 
 use std::mem::{zeroed};

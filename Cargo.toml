@@ -8,8 +8,8 @@ name = "cuda_coll"
 path = "src/lib.rs"
 
 [build-dependencies]
-bindgen = "*"
+bindgen = "^0.38"
 
 [dependencies]
-cuda = { path = "../libcuda" }
-float = { path = "../float" }
+cuda = "^0.3"
+float = "^0.1"
